@@ -9,8 +9,8 @@
     "email": "elcamilet@gmail.com",
     "url": "https://github.com/elcamilet/txtree"
   },
-  "icon": "icon.png",
-  "repository": "https://github.com/elcamilet/txtree.git",
+"icon": "icon.png",
+"repository": "https://github.com/elcamilet/txtree.git",
   "engines": {
     "vscode": "^1.75.0"
   },
