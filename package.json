@@ -1,0 +1,176 @@
+{
+  "name": "txtree",
+  "displayName": "txTree",
+  "description": "A TXT Tree for old-school developers",
+  "version": "0.0.1",
+  "publisher": "elcamilet",
+  "author": {
+    "name": "Camilo Nevot",
+    "email": "elcamilet@gmail.com",
+    "url": "https://github.com/elcamilet/txtree"
+  },
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "txTree",
+          "title": "txTree Explorer",
+          "icon": "resources/dark/file.svg"
+        }
+      ]
+    },
+    "views": {
+      "txTree": [
+        {
+          "id": "txTreeView",
+          "name": "txTree Explorer",
+          "icon": ""
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "txTree.addFolder",
+        "category": "txTree",
+        "title": "Add Folder"
+      },
+      {
+        "command": "txTree.unlinkFolder",
+        "category": "txTree",
+        "title": "Unlink Folder"
+      },
+      {
+        "command": "txTree.copyFile",
+        "category": "txTree",
+        "title": "Copy"
+      },
+      {
+        "command": "txTree.cut",
+        "category": "txTree",
+        "title": "Cut"
+      },
+      {
+        "command": "txTree.pasteFile",
+        "category": "txTree",
+        "title": "Paste"
+      },
+      {
+        "command": "txTree.rename",
+        "category": "txTree",
+        "title": "Rename"
+      },
+      {
+        "command": "txTree.delete",
+        "category": "txTree",
+        "title": "Delete"
+      },
+      {
+        "command": "txTree.openInExplorer",
+        "category": "txTree",
+        "title": "Open in File Explorer"
+      },
+      {
+        "command": "txTree.openFile",
+        "category": "txTree",
+        "title": "Open File"
+      },
+      {
+        "command": "txTree.createFile",
+        "category": "txTree",
+        "title": "New file"
+      },
+      {
+        "command": "txTree.createFolder",
+        "category": "txTree",
+        "title": "New folder"
+      }
+    ],
+    "menus": {
+      "view/item/context": [
+        {
+          "command": "txTree.unlinkFolder",
+          "title": "Unlink Folder",
+          "when": "view == txTreeView && viewItem == root",
+          "group": "1_navigation"
+        },
+        {
+          "command": "txTree.pasteFile",
+          "title": "Paste",
+          "when": "view == txTreeView && fileClipboard",
+          "group": "1_navigation"
+        },
+        {
+          "command": "txTree.createFile",
+          "title": "New file",
+          "when": "view == txTreeView",
+          "group": "1_navigation"
+        },
+        {
+          "command": "txTree.createFolder",
+          "title": "New folder",
+          "when": "view == txTreeView",
+          "group": "1_navigation"
+        },
+        {
+          "command": "txTree.openInExplorer",
+          "title": "Open in File Explorer",
+          "when": "view == txTreeView && viewItem != root",
+          "group": "1_navigation"
+        },
+        {
+          "command": "txTree.copyFile",
+          "title": "Copy",
+          "when": "view == txTreeView && viewItem != root",
+          "group": "2_modification"
+        },
+        {
+          "command": "txTree.cut",
+          "title": "Cut",
+          "when": "view == txTreeView && viewItem != root",
+          "group": "2_modification"
+        },
+        {
+          "command": "txTree.pasteFile",
+          "title": "Paste",
+          "when": "view == txTreeView && fileClipboard && viewItem != root",
+          "group": "2_modification"
+        },
+        {
+          "command": "txTree.rename",
+          "title": "Rename",
+          "when": "view == txTreeView && viewItem != root",
+          "group": "2_modification"
+        },
+        {
+          "command": "txTree.delete",
+          "title": "Delete",
+          "when": "view == txTreeView && viewItem != root",
+          "group": "2_modification"
+        }
+      ],
+      "view/title": [
+        {
+          "command": "txTree.addFolder",
+          "when": "view == txTreeView",
+          "group": "navigation@1"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "postinstall": "node -e \"try { require('./out/installTypings.js') } catch(e) { console.log('No installTypings.js found.') }\""
+  },
+  "devDependencies": {
+    "typescript": "^5.2.0",
+    "@types/node": "^18.0.0",
+    "@types/vscode": "^1.80.0"
+  }
+}
